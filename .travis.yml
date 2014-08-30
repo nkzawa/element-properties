@@ -1,3 +1,8 @@
 language: node_js
+script: ./node_modules/.bin/karma start karma.conf-cli.js
 node_js:
   - 0.10
+env:
+  global:
+    - secure: TflfJTCdnGvq9twa3pcWd64mfUF8hIdXGg5o1vbeVmfHaRcSkEg/JRpB72MyRgVv3dxh0ktxgrOdnyjGUI3zI4Um0LtbsYG/iPrRpCwWWK5U57Y9/Za5ltJKf728K4QDZobNAkXeqf4qsUrwk5mm8gEKyDzCmp2NHkKR7B1asNY=
+    - secure: biUOnJvYP2F4xP9ksl2iX49Qtf0Oqwaene76Rnts/vuUk9aTXwdZbGdZ/0C79z259IzcbyG/g4IWegw9NbH2WD52M5Qa96+DNzq851aXuT68pI9oH4w7W9bNdfDSZGoYHzJyM+gdv7EzYbtEZxX5zFFFpSbIjMDjUH39R43Q0Ss=
