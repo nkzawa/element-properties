@@ -1,5 +1,5 @@
 language: node_js
-script: ./node_modules/.bin/karma start karma.conf-cli.js
+script: ./node_modules/.bin/karma start karma.conf-ci.js
 node_js:
   - 0.10
 env:
