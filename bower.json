@@ -1,0 +1,27 @@
+{
+  "name": "element-properties",
+  "main": "element-properties.js",
+  "version": "0.1.0",
+  "license": "MIT",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "element",
+    "custom",
+    "properties",
+    "attributes"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "expect": "~0.3.1"
+  }
+}
