@@ -28,6 +28,7 @@ module.exports = function(config) {
     sauceLabs: {
       testName: 'element-properties unit tests'
     },
+    browserNoActivityTimeout: 60000,
     captureTimeout: 0, // rely on SauceLabs timeout
     customLaunchers: {
       saucelabs: {
