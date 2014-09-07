@@ -2,10 +2,10 @@ describe('element-properties', function() {
 
   beforeEach(function() {
     this.definitions = {
-      foo: 1,
+      Foo: 1,
       publish: {
-        bar: 2,
-        baz: {value: 3, reflect: true}
+        Bar: 2,
+        Baz: {value: 3, reflect: true}
       }
     };
   });
@@ -14,29 +14,29 @@ describe('element-properties', function() {
     var node = document.createElement('div');
     elementProperties(node, this.definitions);
 
-    expect(node.foo).to.eql(1);
-    expect(node.bar).to.eql(2);
-    expect(node.baz).to.eql(3);
-    expect(node.getAttribute('foo')).not.to.be.ok();
-    expect(node.getAttribute('bar')).not.to.be.ok();
-    expect(node.getAttribute('baz')).to.be('3');
+    expect(node.Foo).to.eql(1);
+    expect(node.Bar).to.eql(2);
+    expect(node.Baz).to.eql(3);
+    expect(node.getAttribute('Foo')).not.to.be.ok();
+    expect(node.getAttribute('Bar')).not.to.be.ok();
+    expect(node.getAttribute('Baz')).to.be('3');
   });
 
   it('should define properties from default attributes', function() {
     var node = document.createElement('div');
-    node.setAttribute('foo', 4);
-    node.setAttribute('bar', 5);
-    node.setAttribute('baz', 6);
+    node.setAttribute('Foo', 4);
+    node.setAttribute('Bar', 5);
+    node.setAttribute('Baz', 6);
 
     elementProperties(node, this.definitions);
 
-    expect(node.foo).to.eql(1);
-    expect(node.bar).to.eql(5);
-    expect(node.baz).to.eql(6);
+    expect(node.Foo).to.eql(1);
+    expect(node.Bar).to.eql(5);
+    expect(node.Baz).to.eql(6);
     // doesn't work on IE8
-    //expect(node.getAttribute('foo')).to.be('4');
-    expect(node.getAttribute('bar')).to.be('5');
-    expect(node.getAttribute('baz')).to.be('6');
+    //expect(node.getAttribute('Foo')).to.be('4');
+    expect(node.getAttribute('Bar')).to.be('5');
+    expect(node.getAttribute('Baz')).to.be('6');
   });
 
   it('should publish properties as attributes', function() {
@@ -44,30 +44,30 @@ describe('element-properties', function() {
     elementProperties(node, this.definitions);
 
     // doesn't work on IE8
-    //node.setAttribute('foo', 4);
-    node.setAttribute('bar', 5);
-    node.setAttribute('baz', 6);
+    //node.setAttribute('Foo', 4);
+    node.setAttribute('Bar', 5);
+    node.setAttribute('Baz', 6);
 
-    expect(node.bar).to.eql(5);
-    expect(node.baz).to.eql(6);
-    expect(node.getAttribute('bar')).to.be('5');
-    expect(node.getAttribute('baz')).to.be('6');
+    expect(node.Bar).to.eql(5);
+    expect(node.Baz).to.eql(6);
+    expect(node.getAttribute('Bar')).to.be('5');
+    expect(node.getAttribute('Baz')).to.be('6');
   });
 
   it('should reflect properties to attributes', function() {
     var node = document.createElement('div');
     elementProperties(node, this.definitions);
 
-    node.foo = 4;
-    node.bar = 5;
-    node.baz = 6;
+    node.Foo = 4;
+    node.Bar = 5;
+    node.Baz = 6;
 
-    expect(node.foo).to.eql(4);
-    expect(node.bar).to.eql(5);
-    expect(node.baz).to.eql(6);
-    expect(node.getAttribute('foo')).not.to.be.ok();
-    expect(node.getAttribute('bar')).not.to.be.ok();
-    expect(node.getAttribute('baz')).to.be('6');
+    expect(node.Foo).to.eql(4);
+    expect(node.Bar).to.eql(5);
+    expect(node.Baz).to.eql(6);
+    expect(node.getAttribute('Foo')).not.to.be.ok();
+    expect(node.getAttribute('Bar')).not.to.be.ok();
+    expect(node.getAttribute('Baz')).to.be('6');
   });
 
   it('should call handler', function() {
@@ -78,20 +78,28 @@ describe('element-properties', function() {
     });
 
     expect(args).to.eql([
-      ['foo', undefined, 1],
-      ['bar', undefined, 2],
-      ['baz', undefined, 3]
+      ['Foo', undefined, 1],
+      ['Bar', undefined, 2],
+      ['Baz', undefined, 3]
     ]);
+  });
+
+  it('should call handler by changing property values', function() {
+    var node = document.createElement('div');
+    var args = [];
+    elementProperties(node, this.definitions, function() {
+      args.push(Array.prototype.slice.call(arguments));
+    });
 
     args = [];
-    node.foo = 4;
-    node.bar = 5;
-    node.baz = 6;
+    node.Foo = 4;
+    node.Bar = 5;
+    node.Baz = 6;
 
     expect(args).to.eql([
-      ['foo', 1, 4],
-      ['bar', 2, 5],
-      ['baz', 3, 6]
+      ['Foo', 1, 4],
+      ['Bar', 2, 5],
+      ['Baz', 3, 6]
     ]);
   });
 
@@ -104,13 +112,13 @@ describe('element-properties', function() {
 
     args = [];
     // doesn't work on IE8
-    //node.setAttribute('foo', 4);
-    node.setAttribute('bar', 5);
-    node.setAttribute('baz', 6);
+    //node.setAttribute('Foo', 4);
+    node.setAttribute('Bar', 5);
+    node.setAttribute('Baz', 6);
 
     expect(args).to.eql([
-      ['bar', 2, 5],
-      ['baz', 3, 6]
+      ['Bar', 2, 5],
+      ['Baz', 3, 6]
     ]);
   });
 });
