@@ -1,7 +1,5 @@
 language: node_js
 script: ./node_modules/.bin/karma start karma.conf-ci.js
-node_js:
-  - 0.10
 env:
   global:
     - secure: IB7SEUbgPOT8YT/ixS2GFYXPozcfj+CZrC/h2Qpbu0Yx6gl04nXahN+HmmWK67jhMGjOZ6pw/mLWlGn75hocYm6tLxYdl/Ni+kpA6SPLseOvlR8tz+iTCHOJRD89QlvcoXabZKqcVGBTbt7hjsPQ8I/AwuE/Qt5kmoMzEFBfh7Y=
@@ -9,26 +7,26 @@ env:
 matrix:
   include:
     - node_js: 0.10
-      env: BROWSER_NAME=chrome BROWSER_VERSION=latest
+      env: BROWSER_NAME=chrome BROWSER_VERSION="" BROWSER_PLATFORM="Windows 8.1"
     - node_js: 0.10
-      env: BROWSER_NAME=firefox BROWSER_VERSION=latest
+      env: BROWSER_NAME=firefox BROWSER_VERSION=31 BROWSER_PLATFORM="Windows 8.1"
     - node_js: 0.10
-      env: BROWSER_NAME=safari BROWSER_VERSION=latest
+      env: BROWSER_NAME=safari BROWSER_VERSION=7 BROWSER_PLATFORM="OS X 10.9"
     - node_js: 0.10
-      env: BROWSER_NAME="internet explorer" BROWSER_VERSION=latest
+      env: BROWSER_NAME="internet explorer" BROWSER_VERSION=11 BROWSER_PLATFORM="Windows 8.1"
     - node_js: 0.10
-      env: BROWSER_NAME="internet explorer" BROWSER_VERSION=10
+      env: BROWSER_NAME="internet explorer" BROWSER_VERSION=10 BROWSER_PLATFORM="Windows 7"
     - node_js: 0.10
-      env: BROWSER_NAME="internet explorer" BROWSER_VERSION=9
+      env: BROWSER_NAME="internet explorer" BROWSER_VERSION=9 BROWSER_PLATFORM="Windows 7"
     - node_js: 0.10
-      env: BROWSER_NAME="internet explorer" BROWSER_VERSION=8
+      env: BROWSER_NAME="internet explorer" BROWSER_VERSION=8 BROWSER_PLATFORM="Windows 7"
     - node_js: 0.10
-      env: BROWSER_NAME=iphone BROWSER_VERSION=7.1
+      env: BROWSER_NAME=iphone BROWSER_VERSION=7.1 BROWSER_PLATFORM="OS X 10.9"
     - node_js: 0.10
-      env: BROWSER_NAME=iphone BROWSER_VERSION=6.1
+      env: BROWSER_NAME=iphone BROWSER_VERSION=6.1 BROWSER_PLATFORM="OS X 10.8"
     - node_js: 0.10
-      env: BROWSER_NAME=android BROWSER_VERSION=4.4
+      env: BROWSER_NAME=android BROWSER_VERSION=4.4 BROWSER_PLATFORM="Linux"
     - node_js: 0.10
-      env: BROWSER_NAME=android BROWSER_VERSION=4.3
+      env: BROWSER_NAME=android BROWSER_VERSION=4.3 BROWSER_PLATFORM="Linux"
     - node_js: 0.10
-      env: BROWSER_NAME=android BROWSER_VERSION=4.2
+      env: BROWSER_NAME=android BROWSER_VERSION=4.2 BROWSER_PLATFORM="Linux"

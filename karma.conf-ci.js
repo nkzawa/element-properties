@@ -6,8 +6,8 @@ module.exports = function(config) {
     process.exit(1);
   }
 
-  if (!process.env.BROWSER_NAME || !process.env.BROWSER_VERSION) {
-    console.log('Make sure the BROWSER_NAME and BROWSER_VERSION environment variables are set.');
+  if (!process.env.BROWSER_NAME) {
+    console.log('Make sure the BROWSER_NAME environment variables are set.');
     process.exit(1);
   }
 
@@ -33,6 +33,7 @@ module.exports = function(config) {
       saucelabs: {
         base: 'SauceLabs',
         browserName: process.env.BROWSER_NAME,
+        platform: process.env.BROWSER_PLATFORM,
         version: process.env.BROWSER_VERSION
       }
     },
