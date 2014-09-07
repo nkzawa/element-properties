@@ -192,18 +192,27 @@ return /******/ (function(modules) { // webpackBootstrap
   }
 
   function changeAttribute(element, name, value, operation) {
-    name = name.toLowerCase();
-    var oldValue = element.getAttribute(name);
-    operation.call(element, name, value);
+    var lowerName = name.toLowerCase();
+    var oldValue = element.getAttribute(lowerName);
+    operation.call(element, lowerName, value);
 
     if (element._reflecting) {
       element._reflecting = false;
       return;
     }
 
-    var newValue = element.getAttribute(name);
+    // HACK: to expose value as attribute for IE8
+    if (hasAttributeSynch && 'undefined' !== typeof value && !element.hasAttribute(lowerName)) {
+      var definition = element._published[lowerName];
+      if (definition && !definition.reflect) {
+        reflectAttribute(element, definition.name, value);
+        return;
+      }
+    }
+
+    var newValue = element.getAttribute(lowerName);
     if (element.attributeChangedCallback && newValue !== oldValue) {
-      element.attributeChangedCallback(name, oldValue, newValue);
+      element.attributeChangedCallback(lowerName, oldValue, newValue);
     }
   }
 
@@ -216,14 +225,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
     published[name.toLowerCase()] = {
       name: name,
+      reflect: options.reflect,
       deserialize: options.deserialize
     };
 
     if (!element.attributeChangedCallback) {
-      privateProperty(element, 'attributeChangedCallback', function(name, oldValue, newValue) {
-        if (name === 'class' || name === 'style') return;
+      privateProperty(element, 'attributeChangedCallback', function(lowerName, oldValue, newValue) {
+        if (lowerName === 'class' || lowerName === 'style') return;
 
-        var definition = published[name];
+        var definition = published[lowerName];
         if (!definition) return;
 
         var value = definition.deserialize(newValue);
