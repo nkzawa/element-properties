@@ -4,5 +4,31 @@ node_js:
   - 0.10
 env:
   global:
-    - secure: TflfJTCdnGvq9twa3pcWd64mfUF8hIdXGg5o1vbeVmfHaRcSkEg/JRpB72MyRgVv3dxh0ktxgrOdnyjGUI3zI4Um0LtbsYG/iPrRpCwWWK5U57Y9/Za5ltJKf728K4QDZobNAkXeqf4qsUrwk5mm8gEKyDzCmp2NHkKR7B1asNY=
-    - secure: biUOnJvYP2F4xP9ksl2iX49Qtf0Oqwaene76Rnts/vuUk9aTXwdZbGdZ/0C79z259IzcbyG/g4IWegw9NbH2WD52M5Qa96+DNzq851aXuT68pI9oH4w7W9bNdfDSZGoYHzJyM+gdv7EzYbtEZxX5zFFFpSbIjMDjUH39R43Q0Ss=
+    - secure: IB7SEUbgPOT8YT/ixS2GFYXPozcfj+CZrC/h2Qpbu0Yx6gl04nXahN+HmmWK67jhMGjOZ6pw/mLWlGn75hocYm6tLxYdl/Ni+kpA6SPLseOvlR8tz+iTCHOJRD89QlvcoXabZKqcVGBTbt7hjsPQ8I/AwuE/Qt5kmoMzEFBfh7Y=
+    - secure: B6ZglF/dKbqxFnICJB6K7ujtMYp2ycOUvnYcoU/dGIzsHdM8jEtQkKt9dMnLTEYGLSLI/uoiEYTAWWPT7VZArT2yCJK+1hSSR84hgb3nkxCb6tyuhCWFMs02FId7lMj8sJMcp8S4muxF0Gk3YBBkMuSaD4SF6KhF7Qc/XY7Apbo=
+matrix:
+  include:
+    - node_js: 0.10
+      env: BROWSER_NAME=chrome BROWSER_VERSION=latest
+    - node_js: 0.10
+      env: BROWSER_NAME=firefox BROWSER_VERSION=latest
+    - node_js: 0.10
+      env: BROWSER_NAME=safari BROWSER_VERSION=latest
+    - node_js: 0.10
+      env: BROWSER_NAME="internet explorer" BROWSER_VERSION=latest
+    - node_js: 0.10
+      env: BROWSER_NAME="internet explorer" BROWSER_VERSION=10
+    - node_js: 0.10
+      env: BROWSER_NAME="internet explorer" BROWSER_VERSION=9
+    - node_js: 0.10
+      env: BROWSER_NAME="internet explorer" BROWSER_VERSION=8
+    - node_js: 0.10
+      env: BROWSER_NAME=iphone BROWSER_VERSION=7.1
+    - node_js: 0.10
+      env: BROWSER_NAME=iphone BROWSER_VERSION=6.1
+    - node_js: 0.10
+      env: BROWSER_NAME=android BROWSER_VERSION=4.4
+    - node_js: 0.10
+      env: BROWSER_NAME=android BROWSER_VERSION=4.3
+    - node_js: 0.10
+      env: BROWSER_NAME=android BROWSER_VERSION=4.2
